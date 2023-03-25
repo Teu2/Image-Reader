@@ -1,0 +1,78 @@
+.mantine-Modal-header .mantine-UnstyledButton-root {
+  background-color: #ff922b;
+}
+.mantine-Modal-header h2 {
+  color: #202020;
+  font-weight: bold;
+}
+
+.mantine-Modal-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.mantine-Modal-body {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mantine-Modal-body p {
+  color: #202020;
+  font-size: 13px;
+}
+.mantine-Modal-body h5 {
+  color: #202020;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.mantine-Modal-body ul {
+  margin-left: 30px;
+}
+.mantine-Modal-body ul li {
+  color: #202020;
+  font-size: 13px;
+}
+
+.sidebar {
+  list-style: none;
+  background-color: rgb(11, 11, 11);
+  position: absolute;
+  height: 84vh;
+  width: 190px;
+  top: 0;
+  padding: 4.5em 2em;
+  z-index: 99;
+}
+.sidebar .sidebar-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sidebar .sidebar-items li {
+  padding: 4px 5px;
+  border-radius: 5px;
+}
+.sidebar .sidebar-items li span {
+  transition: 0.1s ease;
+}
+.sidebar .sidebar-items li span:hover {
+  color: #ff922b;
+  font-weight: bold;
+}
+.sidebar .sidebar-items li:hover {
+  color: #ff922b;
+  cursor: pointer;
+  font-weight: bold;
+}
+.sidebar .sidebar-items a {
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.1s ease;
+}
+.sidebar .sidebar-items a:hover {
+  color: #ff922b;
+  cursor: pointer;
+}/*# sourceMappingURL=Sidebar.css.map */

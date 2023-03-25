@@ -1,0 +1,109 @@
+.mantine-UnstyledButton-root {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.mantine-Tooltip-tooltip {
+  background-color: #101010;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+}
+.center .translate-button {
+  background-color: #ff922b;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  font-size: 14px;
+  padding: 10px 60px;
+}
+.center .translate-button:hover {
+  cursor: pointer;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 0px;
+  gap: 225px;
+}
+.flex-end .mantine-UnstyledButton-root {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  height: 25px;
+}
+
+.upload-section .selection-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.upload-section .selection-info svg {
+  transition: 0.3s ease;
+  width: 15px;
+  height: 15px;
+  fill: #646464;
+}
+.upload-section .selection-info svg:hover {
+  cursor: pointer;
+  fill: #9a9a9a;
+}
+.upload-section .selection-info .drop-down-selection {
+  display: flex;
+  margin-bottom: 15px;
+}
+.upload-section .selection-info .drop-down-selection form {
+  display: flex;
+  gap: 14px;
+}
+.upload-section .selection-info .mantine-UnstyledButton-root {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+.upload-section .selection-info .mantine-Popover-dropdown p {
+  color: #202020;
+  padding: 5px 0px;
+}
+.upload-section .selection-info .mantine-Popover-dropdown .ot {
+  color: #202020;
+  font-weight: bold;
+}
+.upload-section .file-upload-section-1 {
+  background-color: #1D1D1D;
+  border: 1px solid #505050;
+  border-radius: 6px;
+  height: 410px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+.upload-section .file-upload-section-1 img {
+  max-width: 95%;
+  max-height: 95%;
+}
+.upload-section .file-upload-section-1 span {
+  text-align: center;
+}
+.upload-section .file-upload-section-1 span p {
+  color: #646464;
+}
+.upload-section .file-upload-section-1 span svg {
+  width: 25px;
+  height: 25px;
+}
+.upload-section .file-upload-section-1:hover {
+  cursor: pointer;
+  background-color: #202020;
+}/*# sourceMappingURL=UploadSection.css.map */

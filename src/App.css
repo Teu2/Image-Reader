@@ -1,0 +1,52 @@
+.Toastify__toast-body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.App {
+  margin: 0;
+}
+.App .title {
+  text-align: center;
+  margin-top: 40px;
+}
+.App .title h1 {
+  font-size: 40px;
+  color: white;
+}
+.App .title .ot-sm {
+  font-size: 24px;
+  color: #FF922B;
+}
+.App .collapsible-sidebar {
+  z-index: 100;
+}
+.App .collapsible-sidebar .mantine-UnstyledButton-root {
+  z-index: 103;
+  margin-top: 20px;
+  margin-left: 27px;
+}
+.App .collapsible-sidebar .mantine-Burger-burger {
+  z-index: 104;
+}
+
+.container {
+  width: 685px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload {
+  margin-top: 100px;
+}/*# sourceMappingURL=App.css.map */

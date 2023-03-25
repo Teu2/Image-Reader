@@ -1,0 +1,134 @@
+.mantine-UnstyledButton-root{
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.mantine-Tooltip-tooltip{
+    background-color: #101010
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    
+    .translate-button{
+        background-color: #ff922b;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        color: white;
+        font-size: 14px;
+        padding: 10px 60px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.flex-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 0px;
+    gap: 225px;
+
+    .mantine-UnstyledButton-root{ // info icon
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        height: 25px;
+    }
+
+}
+
+.upload-section{
+
+    .selection-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg{
+            transition: 0.3s ease;
+            width: 15px;
+            height: 15px;
+            fill: #646464;
+
+            &:hover{
+                cursor: pointer;
+                fill: #9a9a9a;
+            }
+        }
+
+        .drop-down-selection{
+            display: flex;
+            margin-bottom: 15px;
+
+            form{
+                display: flex;
+                gap: 14px;
+            }
+        }
+
+        .mantine-UnstyledButton-root{ // info icon
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mantine-Popover-dropdown{
+
+            p{
+                color: #202020;
+                padding: 5px 0px;
+            }
+
+            .ot{
+                color: #202020;
+                font-weight: bold;
+            }
+
+        }
+    }
+
+    .file-upload-section-1{
+        background-color: #1D1D1D;
+        border: 1px solid #505050;
+        border-radius: 6px;
+        height: 410px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: 0.2s ease;
+
+        img{ // keeps images contained within the file upload section
+            max-width: 95%;
+            max-height: 95%;
+        }
+
+        span{
+            text-align: center;
+
+            p{
+                color: #646464;
+            }
+
+            svg{
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        &:hover{
+            cursor: pointer;
+            background-color: #202020;
+        }
+        
+    }
+}

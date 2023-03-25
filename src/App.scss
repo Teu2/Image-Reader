@@ -1,0 +1,69 @@
+
+.Toastify__toast-body{
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.App{
+  margin: 0;
+
+  .title{
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+
+    .version{
+      position: absolute;
+      font-size: 12px;
+      top: 9px;
+      margin-left: 2px;
+    }
+
+    h1{
+      font-size: 40px;
+      color: white;
+    }
+    .ot-sm{
+      font-size: 24px;
+      color: #FF922B;
+    }
+  }
+
+  .collapsible-sidebar{
+    z-index: 100;
+
+    .mantine-UnstyledButton-root{
+      z-index: 103;
+      margin-top: 20px;
+      margin-left: 27px;
+    }
+
+    .mantine-Burger-burger{
+      z-index: 104;
+    };
+
+  }
+
+  
+}
+
+.container{
+  width: 685px;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload{
+  margin-top: 100px;
+}

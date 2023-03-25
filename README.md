@@ -5,12 +5,13 @@ This is the repository for Manga Raw! Manga Raw is a web application i'm develop
 ### Current Features
 
 * Merges two images into one (for future use when translating whole panels).
-* Translates text image snippets into a desired language.
+* Translates jpn text image snippets into a desired language.
     * Current languages supported: (English, 한국어, Česky, Français)
 
 ### Planned Features
 
-* Translate whole manga panels
+* More language sources and targets
+* Translate whole manga, manhua or manhwa panels
     * Use OpenCV to detect speech bubbles which requires Node.js
 
 

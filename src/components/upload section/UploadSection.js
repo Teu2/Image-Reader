@@ -90,7 +90,7 @@ export const UploadSection = () => {
             {/*UPLOAD ZONE - this is where the user will either upload or drag and drop their images into the component (UI output depends on image size) */}
             <DragDropZone images={images} setImages={setImages} invalidNotify={invalidNotify} mergedPanels={mergedPanels}/>
             <div className="center">
-                <p>Translated text: {translatedText}</p>
+                {translatedText === "" ? (<p>Translated text: <em>nothing yet...</em> </p>) : (<p>Translated text: "{translatedText}"</p>)}
             </div>
             {/* TRANSLATE SECTION - button and logic that goes into translating the image uploaded in the 'UPLOAD ZONE' is here */}
             <div className="center flex-end"> 

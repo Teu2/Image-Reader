@@ -1,11 +1,13 @@
 # MANGA Raw (In Development)
 
-This is the repository for Manga Raw! Manga Raw is a web application i'm developing to improve my React skills as well as to get a solid understanding of asynchronous programming. This is a very early iteration of the web app.
+This is the repository for Manga Raw! Manga Raw is a web application i'm developing to improve my React skills as well as to get a solid understanding of asynchronous programming. This is a very early iteration of the web app and currently only translates image snippets of japanese text.
 
 ### Current Features
 
-* Merges two images into one (for future use when translating whole panels).
-* Translates jpn text image snippets into a desired language.
+* Drag and drop upload feature
+* Merges two images into one (for future use when translating whole panels)
+* Supports vertical and horizontal jp texts 
+* Translates jp text image snippets into a desired language *(translation accuracy may very)*
     * Current languages supported: (English, 한국어, Česky, Français)
 
 ### Planned Features

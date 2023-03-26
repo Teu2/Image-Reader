@@ -2,14 +2,17 @@ import React from 'react'
 import Tesseract from 'tesseract.js';
 import axios from 'axios';
 
-export const TranslateButton = ({ images, language, invalidNotify, kanjiDirection, setMergedPanels, setTextArray, setTranslatedText }) => {
+export const TranslateButton = ({ images, language, invalidNotify, kanjiDirection, setMergedPanels, setTextArray, setTranslatedText, setIsTranslating }) => {
+    
     const rapidApiKey = process.env.REACT_APP_RAPIDAPI_KEY;
 
     const translatePanels = async () => { // translates panels
+        
         // initial checking
         if(language === ""){ invalidNotify("Please choose a language!"); return; }
         if(kanjiDirection === ""){ invalidNotify("Please choose a letter direction!"); return; }
         if(images.length === 0){ invalidNotify("Please upload images before translating!"); return; }
+        setIsTranslating(true);
 
         if(images.length === 1){ // translate instantly
             detectText(images[0]);
@@ -42,8 +45,8 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
 
     const translateText = (finalOutput) => {
         let delimittedString = finalOutput.replace(/[&\/\\#,+()$~%.'":*?<>{}①⑤④]/g, '');
-
         console.log(`delimittedString: ${delimittedString}`)
+
         const options = {
             method: 'POST',
             url: 'https://translate-plus.p.rapidapi.com/translate',
@@ -56,8 +59,8 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
         };
           
         axios.request(options).then(function (response) {
-            console.log(`translated text: ${response.data.translations.translation}`);
             setTranslatedText(response.data.translations.translation);
+            setIsTranslating(false);
         }).catch(function (error) {
             console.error(error);
         });
@@ -79,13 +82,13 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                 var horOutput = text.replace(regex1, "");
                 translateText(horOutput);
             }else{
-                const formattedText = formatVertText(text).split("").reverse().join(""); // format the text vertically
+                const formattedText = formatVertText(text).split("").reverse().join(""); // format the text vertically 
                 const arr = formattedText.split(" ");
                 console.log(text);
                 
-                for(let i = 0; i < arr.length; i++){
+                for(let i = 0; i < arr.length; i++){ // since vertical japanese is read right to left, reverse the string aray
                     arr[i] = reverseString(arr[i]);
-                    console.log(arr[i]);
+                    console.log(`arr[${i}]: ${arr[i]}`);
                 }
 
                 var vertOutput = arr.toString().replaceAll(",", " ");
@@ -93,7 +96,6 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                 console.log(`final output (RAW): ${vertOutput}`);
                 translateText(vertOutput);
             }
-            
         });
     }
 

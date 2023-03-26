@@ -12,7 +12,7 @@ export const Sidebar = () => {
                 <p>Have you been reading a manga and suddenly come across the fact it hasn't been updated in a few months?</p>
                 <p>Translations take some time to complete, and some books just end up getting dropped by translators which is always something you don't want to see.</p> 
                 <p>The solution? Let computers do things Humans can't be bothered with!</p>
-                <p>Just take a snippet of the panel you want to translate, upload them, click translate, then start reading!</p>
+                <p>Just take a snippet of the text you want to translate, upload them, click translate, then start reading!</p>
                 <h5>Technologies Used</h5>
                 <ul>
                     <li>React {`(Front-End)`}</li>

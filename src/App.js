@@ -22,7 +22,7 @@ function App() {
 			{/* page title */}
 			<div className="title">
 			<h1>MANGA<span className="ot-sm">RAW</span><span className="version">v1.1</span></h1>
-				<p>Your own image and manga translator app!</p>
+				<p>Your own JP text in image translator buddy!</p>
 			</div>
 
 			{/* upload section is the bulk of the application */}

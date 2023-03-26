@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+.mantine-LoadingOverlay-root{
+    position: absolute;
+}
+
 .mantine-Tooltip-tooltip{
     background-color: #101010
 }
@@ -28,12 +32,17 @@
             cursor: pointer;
         }
     }
+
+    #translating-text{
+        margin-left: 5px;
+    }
 }
 
 .flex-end{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
     padding: 10px 0px;
     gap: 225px;
 

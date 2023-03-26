@@ -15,7 +15,7 @@ export const Dropdowns = ({ language, handleLanguageChange, kanjiDirection, hand
             value={language}
             onChange={handleLanguageChange}
         />
-        <Select placeholder="Letter Direction" size="xs" name="kanjiDirection" 
+        <Select placeholder="Text Direction" size="xs" name="kanjiDirection" 
             data={[
                 { value: 'hor', label: 'Horizontal' },
                 { value: 'vert', label: 'Vertical' },

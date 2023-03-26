@@ -6,7 +6,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FiRefreshCw } from "react-icons/fi";
 
 // Mantine UI
-import { Popover, Text, Tooltip, Button } from '@mantine/core';
+import { Popover, Text, Tooltip, Button, Loader } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 // SCSS
@@ -20,16 +20,23 @@ import { TranslateButton } from '../translate button/TranslateButton';
 
 export const UploadSection = () => {
 
-    // image hook useStates
+    // image hook useStates to display and translate
     const [images, setImages] = useState([]); // manga panels 
     const [mergedPanels, setMergedPanels] = useState([]); 
 
     // useState hooks needed for translation
     const [language, setLanguage] = useState(""); 
-    const [kanjiDirection, setKanjiDirection] = useState(""); 
+    const [kanjiDirection, setKanjiDirection] = useState("");
+    const [translatedText, setTranslatedText] = useState(""); 
 
     const [opened, { close, open }] = useDisclosure(false);
-    const [translatedText, setTranslatedText] = useState("");
+    
+    // hook used to determine whether or not using has created a box highlight
+    const [dragSelecter, setDragSelector] = useState("");
+    const [dragSelecterImg, setdragSelecterImg] = useState("");
+
+    // hook used to give user indication that the application is translating and not freezing
+    const [isTranslating, setIsTranslating] = useState(false); 
 
     const handleLanguageChange = (value) => {
         setLanguage(value);
@@ -78,8 +85,8 @@ export const UploadSection = () => {
                                 <ol>
                                     <li><p><span className="ot">1.</span> Select a language you want to translate to using the dropdown box on the left.</p></li>
                                     <li><p><span className="ot">2.</span> Now select the letter direction, this is important! otherwise you'll get a wrong translation 😢</p></li>
-                                    <li><p><span className="ot">3.</span> Click 'TRANSLATE', and you're done! open the images in a new tab and start reading!</p></li>
-                                    <li><p><span className="ot">Note:</span> If you uploaded 2 images, they'll merge before being translated!</p></li>
+                                    <li><p><span className="ot">3.</span> Click 'TRANSLATE', and you're done! just read the translated text below your uploaded image!</p></li>
+                                    <li><p><span className="ot">Note:</span> uploading 2 images will make the merge! (later feature)</p></li>
                                 </ol>
                             </Text>
                         </Popover.Dropdown>
@@ -89,13 +96,15 @@ export const UploadSection = () => {
 
             {/*UPLOAD ZONE - this is where the user will either upload or drag and drop their images into the component (UI output depends on image size) */}
             <DragDropZone images={images} setImages={setImages} invalidNotify={invalidNotify} mergedPanels={mergedPanels}/>
+            
             <div className="center">
-                {translatedText === "" ? (<p>Translated text: <em>nothing yet...</em> </p>) : (<p>Translated text: "{translatedText}"</p>)}
+                {isTranslating ? (<><Loader/> <p id="translating-text"> Translating...</p></>) : (<>{translatedText === "" ? (<p>Translated text: <em>nothing yet...</em> </p>) : (<p>Translated text: "{translatedText}"</p>)}</>)}
             </div>
+
             {/* TRANSLATE SECTION - button and logic that goes into translating the image uploaded in the 'UPLOAD ZONE' is here */}
             <div className="center flex-end"> 
-                {/* position relative flex end - then position absolute for the button and svg, button center 0 and svg right 0 - do later */}
-                <TranslateButton images={images} language={language} invalidNotify={invalidNotify} kanjiDirection={kanjiDirection} setMergedPanels={setMergedPanels} mergedPanels={mergedPanels} setTranslatedText={setTranslatedText}/>
+                {/* position relative for flex-end - then position absolute for the button and svg, button center 0 and svg right 0 - do later */}
+                <TranslateButton images={images} language={language} invalidNotify={invalidNotify} kanjiDirection={kanjiDirection} setMergedPanels={setMergedPanels} mergedPanels={mergedPanels} setTranslatedText={setTranslatedText} setIsTranslating={setIsTranslating}/>
                 <Tooltip label="Refresh image upload" color="dark" position="bottom" withArrow>
                     <Button><FiRefreshCw onClick={removePanel}/></Button>              
                 </Tooltip>

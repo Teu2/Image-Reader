@@ -28,7 +28,7 @@ export const Sidebar = () => {
             </Modal>
             <div className="sidebar-items">
                 <li><span onClick={open}>About</span></li>
-                <li><a href="https://github.com/Teu2/manga-raw"  rel="noopener" >GitHub</a></li>
+                <li><a href="https://github.com/Teu2/Manga-Raw-Main"  rel="noopener" >GitHub</a></li>
                 <li><a href="https://dominicyeoh.netlify.app/" rel="noopener">My Website</a></li>
             </div>
         </div>

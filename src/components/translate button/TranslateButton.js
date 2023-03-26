@@ -41,10 +41,8 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
     }
 
     const translateText = (finalOutput) => {
-        let regex = /[^\u3000-\u30FF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/g;
         let delimittedString = finalOutput.replace(/[&\/\\#,+()$~%.'":*?<>{}①⑤④]/g, '');
-        delimittedString = delimittedString.replace(regex, "");
-        
+
         console.log(`delimittedString: ${delimittedString}`)
         const options = {
             method: 'POST',
@@ -67,7 +65,9 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
 
     const detectText = async (imageURL) => { // detect text
         console.log("translating...");
-    
+        let regex1 = /[^\u3000-\u30FF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/g; // regex 1 - horizontal
+        let regex2 = /[^\u0020\u00A0\u3000-\u30FF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/g; // regex 2 - vertical
+        
         // detect japanese characters using Tesseract OCR 
         await Tesseract.recognize(
             imageURL,
@@ -76,7 +76,8 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
         ).then(({ data: { text } }) => {
 
             if(kanjiDirection === "hor"){
-                translateText(text);
+                var horOutput = text.replace(regex1, "");
+                translateText(horOutput);
             }else{
                 const formattedText = formatVertText(text).split("").reverse().join(""); // format the text vertically
                 const arr = formattedText.split(" ");
@@ -87,9 +88,10 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                     console.log(arr[i]);
                 }
 
-                const finalOutput = arr.toString().replaceAll(",", " ");
-                console.log(`final output (RAW): ${finalOutput}`);
-                translateText(finalOutput);
+                var vertOutput = arr.toString().replaceAll(",", " ");
+                vertOutput = vertOutput.replace(regex2, "");
+                console.log(`final output (RAW): ${vertOutput}`);
+                translateText(vertOutput);
             }
             
         });

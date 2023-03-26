@@ -77,7 +77,7 @@ export const UploadSection = () => {
                             <Text size="xs">
                                 <ol>
                                     <li><p><span className="ot">1.</span> Select a language you want to translate to using the dropdown box on the left.</p></li>
-                                    <li><p><span className="ot">2.</span> Now select the kanji direction, this is important! otherwise you'll get a wrong translation 😢</p></li>
+                                    <li><p><span className="ot">2.</span> Now select the letter direction, this is important! otherwise you'll get a wrong translation 😢</p></li>
                                     <li><p><span className="ot">3.</span> Click 'TRANSLATE', and you're done! open the images in a new tab and start reading!</p></li>
                                     <li><p><span className="ot">Note:</span> If you uploaded 2 images, they'll merge before being translated!</p></li>
                                 </ol>

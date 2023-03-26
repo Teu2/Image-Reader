@@ -16,7 +16,7 @@
 
   .title{
     text-align: center;
-    margin-top: 40px;
+    margin-top: 94px;
     position: relative;
 
     .version{
@@ -38,6 +38,8 @@
 
   .collapsible-sidebar{
     z-index: 100;
+    position: fixed;
+    top: 0;
 
     .mantine-UnstyledButton-root{
       z-index: 103;

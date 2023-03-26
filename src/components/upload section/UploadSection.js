@@ -28,10 +28,11 @@ export const UploadSection = () => {
     const [language, setLanguage] = useState(""); 
     const [kanjiDirection, setKanjiDirection] = useState("");
     const [translatedText, setTranslatedText] = useState(""); 
+    const [rawText, setRawText] = useState(""); 
 
     const [opened, { close, open }] = useDisclosure(false);
     
-    // hook used to determine whether or not using has created a box highlight
+    // hook used to determine whether or not user has created a box highlight
     const [dragSelecter, setDragSelector] = useState("");
     const [dragSelecterImg, setdragSelecterImg] = useState("");
 
@@ -46,10 +47,11 @@ export const UploadSection = () => {
         setKanjiDirection(value);
     }
 
-    const removePanel = () => { // removes upladed panels on the screen by the user
+    const removePanel = () => { // removed uploaded panels on the screen by the user
         setMergedPanels([]);
         setImages([]);
         setTranslatedText("");
+        setRawText("");
     }
 
     useEffect(() => {
@@ -84,7 +86,7 @@ export const UploadSection = () => {
                             <Text size="xs">
                                 <ol>
                                     <li><p><span className="ot">1.</span> Select a language you want to translate to using the dropdown box on the left.</p></li>
-                                    <li><p><span className="ot">2.</span> Now select the letter direction, this is important! otherwise you'll get a wrong translation 😢</p></li>
+                                    <li><p><span className="ot">2.</span> Now select the text direction, this is important! otherwise you'll get a wrong translation 😢</p></li>
                                     <li><p><span className="ot">3.</span> Click 'TRANSLATE', and you're done! just read the translated text below your uploaded image!</p></li>
                                     <li><p><span className="ot">Note:</span> uploading 2 images will make the merge! (later feature)</p></li>
                                 </ol>
@@ -98,13 +100,17 @@ export const UploadSection = () => {
             <DragDropZone images={images} setImages={setImages} invalidNotify={invalidNotify} mergedPanels={mergedPanels}/>
             
             <div className="center">
-                {isTranslating ? (<><Loader/> <p id="translating-text"> Translating...</p></>) : (<>{translatedText === "" ? (<p>Translated text: <em>nothing yet...</em> </p>) : (<p>Translated text: "{translatedText}"</p>)}</>)}
+                <div className="translation-section">
+                    
+                    {isTranslating ? (<><div className="loading-anim"><Loader/><p id="translating-text">Translating...</p></div></>) : (<>{translatedText === "" ? (<p>Translated text: <em>nothing yet...</em> </p>) : (<p>Translated text: "{translatedText}"</p>)}</>)}
+                    {rawText !== "" && !isTranslating ? (<>Detected characters: "{rawText}"</>) : null}
+                </div>
             </div>
 
             {/* TRANSLATE SECTION - button and logic that goes into translating the image uploaded in the 'UPLOAD ZONE' is here */}
             <div className="center flex-end"> 
                 {/* position relative for flex-end - then position absolute for the button and svg, button center 0 and svg right 0 - do later */}
-                <TranslateButton images={images} language={language} invalidNotify={invalidNotify} kanjiDirection={kanjiDirection} setMergedPanels={setMergedPanels} mergedPanels={mergedPanels} setTranslatedText={setTranslatedText} setIsTranslating={setIsTranslating}/>
+                <TranslateButton images={images} language={language} invalidNotify={invalidNotify} kanjiDirection={kanjiDirection} setMergedPanels={setMergedPanels} mergedPanels={mergedPanels} setTranslatedText={setTranslatedText} setIsTranslating={setIsTranslating} setRawText={setRawText}/>
                 <Tooltip label="Refresh image upload" color="dark" position="bottom" withArrow>
                     <Button><FiRefreshCw onClick={removePanel}/></Button>              
                 </Tooltip>

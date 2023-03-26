@@ -20,10 +20,12 @@ export const Sidebar = () => {
                     <li>Rapid API - Translate Plus {`(Translation Tool)`}</li>
                     <li>Axios {'(HTTP Requests)'}</li>
                 </ul>
-                <h5>Raw Manga Sources</h5>
+                <h5>Raw JP Sources</h5>
                 <ul>
+                    <li>https://www.1101.com/home.html</li>
+                    <li>https://www.weblio.jp/</li>
+                    <li>https://www.lifehacker.jp/</li>
                     <li>https://tonarinoyj.jp/</li>
-                    <li>https://comic-walker.com/</li>
                 </ul>
             </Modal>
             <div className="sidebar-items">

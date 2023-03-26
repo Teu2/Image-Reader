@@ -33,24 +33,36 @@
         }
     }
 
-    #translating-text{
-        margin-left: 5px;
+    
+    .translation-section{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .loading-anim{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
     }
 }
 
 .flex-end{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     position: relative;
     padding: 10px 0px;
-    gap: 225px;
 
     .mantine-UnstyledButton-root{ // info icon
         background-color: transparent;
         padding: 0;
         margin: 0;
         height: 25px;
+    
+        position: absolute;
+        right: 0px;
     }
 
 }

@@ -48,10 +48,12 @@
     list-style: none;
     background-color: rgb(11, 11, 11);
     position: absolute;
-    height: 84vh;
+    min-height: 100vh; /* set minimum height to 100% of viewport height */
+    height: auto; /* allow height to increase dynamically */
     width: 190px;
     top: 0;
-    padding: 4.5em 2em;
+    // padding: 4.5em 2em;
+    padding: 4.5em 2em 0em 2em;
     z-index: 99;
 
     .sidebar-items{

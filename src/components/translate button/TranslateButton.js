@@ -2,7 +2,7 @@ import React from 'react'
 import Tesseract from 'tesseract.js';
 import axios from 'axios';
 
-export const TranslateButton = ({ images, language, invalidNotify, kanjiDirection, setMergedPanels, setTextArray, setTranslatedText, setIsTranslating }) => {
+export const TranslateButton = ({ images, language, invalidNotify, kanjiDirection, setMergedPanels, setTextArray, setTranslatedText, setIsTranslating, setRawText }) => {
     
     const rapidApiKey = process.env.REACT_APP_RAPIDAPI_KEY;
 
@@ -44,8 +44,9 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
     }
 
     const translateText = (finalOutput) => {
-        let delimittedString = finalOutput.replace(/[&\/\\#,+()$~%.'":*?<>{}①⑤④]/g, '');
+        let delimittedString = finalOutput.replace(/[&\/\\#,+()$~%.'":*<>{}①⑤④]/g, '');
         console.log(`delimittedString: ${delimittedString}`)
+        setRawText(delimittedString);
 
         const options = {
             method: 'POST',
@@ -55,7 +56,7 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                 'X-RapidAPI-Key': rapidApiKey,
                 'X-RapidAPI-Host': 'translate-plus.p.rapidapi.com'
             },
-            data: `{"text": "${delimittedString}","source":"ja","target":"${language}"}`
+            data: `{"text": "${finalOutput}","source":"ja","target":"${language}"}`
         };
           
         axios.request(options).then(function (response) {
@@ -82,10 +83,10 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                 var horOutput = text.replace(regex1, "");
                 translateText(horOutput);
             }else{
+                console.log(text);
                 const formattedText = formatVertText(text).split("").reverse().join(""); // format the text vertically 
                 const arr = formattedText.split(" ");
-                console.log(text);
-                
+
                 for(let i = 0; i < arr.length; i++){ // since vertical japanese is read right to left, reverse the string aray
                     arr[i] = reverseString(arr[i]);
                     console.log(`arr[${i}]: ${arr[i]}`);

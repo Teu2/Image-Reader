@@ -41,7 +41,11 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
     }
 
     const translateText = (finalOutput) => {
+        let regex = /[^\u3000-\u30FF\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/g;
         let delimittedString = finalOutput.replace(/[&\/\\#,+()$~%.'":*?<>{}①⑤④]/g, '');
+        delimittedString = delimittedString.replace(regex, "");
+        
+        console.log(`delimittedString: ${delimittedString}`)
         const options = {
             method: 'POST',
             url: 'https://translate-plus.p.rapidapi.com/translate',
@@ -63,25 +67,31 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
 
     const detectText = async (imageURL) => { // detect text
         console.log("translating...");
-
+    
         // detect japanese characters using Tesseract OCR 
         await Tesseract.recognize(
             imageURL,
             'jpn', // jpn_vert is horrible I don't know why they have it as an option, use jpn instead
         { logger: m => console.log(`1. ${m}`) }
         ).then(({ data: { text } }) => {
-            const formattedText = formatVertText(text).split("").reverse().join(""); // format the text horizontally
-            const arr = formattedText.split(" ");
-            console.log(text);
-            
-            for(let i = 0; i < arr.length; i++){
-                arr[i] = reverseString(arr[i]);
-                console.log(arr[i]);
-            }
 
-            const finalOutput = arr.toString().replaceAll(",", " ");
-            console.log(`final output (RAW): ${finalOutput}`);
-            translateText(finalOutput);
+            if(kanjiDirection === "hor"){
+                translateText(text);
+            }else{
+                const formattedText = formatVertText(text).split("").reverse().join(""); // format the text vertically
+                const arr = formattedText.split(" ");
+                console.log(text);
+                
+                for(let i = 0; i < arr.length; i++){
+                    arr[i] = reverseString(arr[i]);
+                    console.log(arr[i]);
+                }
+
+                const finalOutput = arr.toString().replaceAll(",", " ");
+                console.log(`final output (RAW): ${finalOutput}`);
+                translateText(finalOutput);
+            }
+            
         });
     }
 

@@ -10,9 +10,9 @@ export const Sidebar = () => {
         <div className="sidebar"> 
             <Modal opened={opened} onClose={close} title="What's this application?" centered>
                 <p>Have you been reading a manga and suddenly come across the fact it hasn't been updated in a few months?</p>
-                <p>Translations take some time to complete, and some books just end up getting dropped by translators which is always something you don't want to see.</p> 
+                <p>Reading a book or document in another language and you can't copy the text into google translate?</p> 
                 <p>The solution? Let computers do things Humans can't be bothered with!</p>
-                <p>Just take a snippet of the text you want to translate, upload them, click translate, then start reading!</p>
+                <p>Just take a snippet of the text you want to translate, upload them, click translate, then read the translation!</p>
                 <h5>Technologies Used</h5>
                 <ul>
                     <li>React {`(Front-End)`}</li>

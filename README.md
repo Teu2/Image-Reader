@@ -12,8 +12,9 @@ This is the repository for IMAGE Reader! IMAGE Reader is a web application i'm d
 
 ### Planned Features
 
-* More language sources and targets.
-* Fix detection for languages with a vertical reading direction.
+* More language sources and targets
+* Fix detection for languages with a vertical reading direction
+* Add function to remove Moire patterns to detect characters on a screen
 
 
 ## Technologies 

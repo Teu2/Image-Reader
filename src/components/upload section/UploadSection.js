@@ -88,7 +88,7 @@ export const UploadSection = () => {
                                     <li><p><span className="ot">1.</span> Select a language you want to translate to using the dropdown box on the left.</p></li>
                                     <li><p><span className="ot">2.</span> Now select the reading direction, this is important! otherwise you'll get a wrong translation 😢</p></li>
                                     <li><p><span className="ot">3.</span> Click 'TRANSLATE', and you're done! just read the translated text below your uploaded image!</p></li>
-                                    <li><p><span className="ot">Note:</span> uploading 2 images will make the merge! (later feature)</p></li>
+                                    <li><p><span className="ot">Note:</span> If the translation is weird, try cropping the image to the text itself.</p></li>
                                 </ol>
                             </Text>
                         </Popover.Dropdown>

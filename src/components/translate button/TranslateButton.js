@@ -111,7 +111,7 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                 var horOutput = text.replace(regex1, "");
                 translateText(horOutput);
             }else{
-                console.log(text);
+                console.log(`text: ${text}`);
                 const formattedText = formatVertText(text).split("").reverse().join(""); // format the text vertically 
                 const arr = formattedText.split(" ");
 

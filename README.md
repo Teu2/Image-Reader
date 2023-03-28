@@ -6,7 +6,7 @@ This is the repository for IMAGE Reader! IMAGE Reader is a web application i'm d
 
 * Drag and drop upload feature
 * Merges two images into one (for later feature)
-* Supports vertical and horizontal jp texts 
+* Supports vertical (kind of) and horizontal jp texts 
 * Translates jp text image snippets into a desired language *(translation accuracy may very)*
     * Current languages supported: (English, 한국어, Česky, Français)
 
@@ -32,4 +32,8 @@ Here are the current technologies used for this project!
 2. Run `npm install` or `yarn install` to install the necessary packages
 3. Run `npm start` or `yarn start` to start development 
 4. Happy hacking!
+
+## Demo
+
+Check the demo folder to see output examples!
 

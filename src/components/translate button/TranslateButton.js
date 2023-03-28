@@ -1,10 +1,13 @@
-import React from 'react'
-import Tesseract from 'tesseract.js';
+import React, { useState, useEffect } from 'react'
+import Tesseract, { createWorker } from 'tesseract.js';
 import axios from 'axios';
 
 export const TranslateButton = ({ images, language, invalidNotify, kanjiDirection, setMergedPanels, setTextArray, setTranslatedText, setIsTranslating, setRawText }) => {
     
     const rapidApiKey = process.env.REACT_APP_RAPIDAPI_KEY;
+
+    // detect multiple languages
+    // tesseract ocr -> detect characters -> make an enum or something since tesseract and translate plus use two different language codes
 
     const translatePanels = async () => { // translates panels
         
@@ -43,10 +46,14 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
         return formattedLines.join(' ');
     }
 
-    const translateText = (finalOutput) => {
+    const translateText = async (finalOutput) => {
         let delimittedString = finalOutput.replace(/[&\/\\#,+()$~%.'":*<>{}①⑤④]/g, '');
         console.log(`delimittedString: ${delimittedString}`)
+        
+        let detectedLang = await detectLanguage(delimittedString) // wait until we get the detected language then proceed with translations
         setRawText(delimittedString);
+        
+        console.log(`detectedLang: ${detectedLang}`)
 
         const options = {
             method: 'POST',
@@ -56,7 +63,7 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
                 'X-RapidAPI-Key': rapidApiKey,
                 'X-RapidAPI-Host': 'translate-plus.p.rapidapi.com'
             },
-            data: `{"text": "${finalOutput}","source":"ja","target":"${language}"}`
+            data: `{"text": "${finalOutput}","source":"${detectedLang}","target":"${language}"}`
         };
           
         axios.request(options).then(function (response) {
@@ -65,6 +72,27 @@ export const TranslateButton = ({ images, language, invalidNotify, kanjiDirectio
         }).catch(function (error) {
             console.error(error);
         });
+    }
+
+    const detectLanguage = async (string) => {
+        const options = {
+            method: 'POST',
+            url: 'https://translate-plus.p.rapidapi.com/language_detect',
+            headers: {
+                'content-type': 'application/json',
+                'X-RapidAPI-Key': rapidApiKey,
+                'X-RapidAPI-Host': 'translate-plus.p.rapidapi.com'
+        },
+        data: `{"text":"${string}"}`
+    };
+
+        try{
+            const response = await axios.request(options);
+            return response.data.language_detection.language;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
     }
 
     const detectText = async (imageURL) => { // detect text

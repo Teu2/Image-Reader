@@ -1,4 +1,4 @@
-# IMAGE Reader
+# IMAGE Translator
 
 This is the repository for IMAGE Reader! IMAGE Reader is a web application i'm developing to improve my React skills as well as to get a solid understanding of asynchronous programming. This is a very early iteration of the web app and currently only translates image snippets of japanese text.
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import Tesseract, { createWorker } from 'tesseract.js';
+import React from 'react'
+import Tesseract from 'tesseract.js';
 import axios from 'axios';
 
 export const TranslateButton = ({ images, language, invalidNotify, kanjiDirection, setMergedPanels, setTextArray, setTranslatedText, setIsTranslating, setRawText }) => {

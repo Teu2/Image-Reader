@@ -21,7 +21,7 @@ function App() {
 
 			{/* page title */}
 			<div className="title">
-			<h1>IMAGE<span className="ot-sm">READER</span><span className="version">v1.1</span></h1>
+			<h1>YOMI<span className="ot-sm">SNAP</span><span className="version">v1.1</span></h1>
 				<p>Your own JP text in image translator buddy!</p>
 			</div>
 
